@@ -1,0 +1,119 @@
+jQuery
+
+*概要
+　JavaScriptを便利に扱うためのライブラリ
+　 - https://jquery.com/
+
+　使用する際はCDN(コンテンツ・デリバリ・ネットワーク)を使うとよい。
+　 - https://code.jquery.com/
+
+*用語
+・セレクタ：処理対象となるDOM要素を指定する記法　$("")
+　html要素：そのまま中に記載する→$("p")
+　id：#をつける→$("#main")
+　class:.をつける→$(".item")
+　直下の子要素：>　→$("#main > .item")
+　それ以下の要素： →$("#main .item")
+　複数の要素：, →$("p, .item")
+　隣接する要素：+ →$(".item + .item")　itemの横にあるitem（並んだ時２個目に適用）
+
+★フィルタ：添え字は0から始まることに注意
+　:eq()　→　添字 equal n
+　:gt()　→　添字 greater than n
+　:lt()　→　添字 less than n
+　:even　→　偶数
+　:odd　→　奇数
+　:contains('')　→　中身を指定
+　:first　→　最初
+　:last　→　最後
+
+★属性セレクタ
+　$("a[href=~]")等、[]で指定する。
+　= 　：等しい
+　!=　：等しくない
+　*=　：～を含む
+　^=　：先頭
+　$=　：終わり
+
+
+
+・メソッド：処理
+ 　.css('color','red')
+ 　.hide('slow')
+　　→つなげて書くことができる（メソッドチェーン）
+ 　.css('color','red').hide('slow')
+
+★要素
+　parent()　→　親要素
+　children()　→　子要素
+　next()　→　次
+　prev()　→　前
+　siblings()　→　兄弟要素
+
+★メソッド
+　css：cssの設定・取得
+　addClass,removeClass：classの追加・消去
+　attr（アトリビュート）：属性の値を取得・変更等
+　data：webサービス開発でよく使う。アプリで使うためのカスタム属性。
+　　　　HTML5では、data-**という名前を付ける。
+
+　タグの中身操作
+　text：テキストを入力・取得
+　html：htmlタグを含めて入力・取得
+　val：form部品
+　remove：タグ自体をなくす
+　empty：タグの中身を空にする
+
+　要素の追加
+　before：指定した要素の前に挿入
+　　var li = $('<li>').text('just added');
+　　①pattern1:$('#main > li:eq(1)').after(li);
+　　②pattern2:li.insertBefore($('#main > li:eq(1)'));
+　after：指定した要素の後に挿入
+　　同様に、insertAfterも存在する。
+　prepend：ある要素の子要素の先頭に追加
+　　同様に、prependToも存在する。
+　append：ある要素の子要素の末尾に追加
+　　同様に、appendToも存在する。
+　
+　視覚効果（エフェクト）
+　hide：シュッと消える
+　show：シュッと現れる
+　fadeOut：ふわっと消える
+　fadeIn：ふわっと
+　toggle：hideとshowを交互に
+　　コールバック関数を指定すると、動作後にfunctionを実行できる
+  　//数値の後に関数をとる（コールバック関数）
+  　$("#box").fadeOut(800, function(){
+   　 alert("gone!");
+  　});
+
+　イベント
+　マウス関連
+　　click：クリック時
+　　mouseover：ポインタが乗っているとき
+　　mouseout：ポインタが離れたとき
+  　mousemove：ポインタが動いているとき
+　フォーム部品関連
+　　focus：フォーカスがのっかったとき
+　　blur：フォーカスが外れたとき
+　　change：選択しているものが変わったとき
+　動的な要素操作
+　　on：
+　　$('親要素').on('イベントの種類','イベントの対象',function(){～});
+
+　Ajax（エイジャックス）：Asynchronous JavaScript + XML
+　→サーバと通信(非同期＝処理が終わる前に次の処理に移る) + ページの書き換え
+　例）ローカル開発環境をvagrantで立ち上げる(192.168.73.15)
+　　→index.htmlをファイル転送
+　　→phpが簡易的に用意しているサーバ立ち上げ機能
+　　　$ php -S 192.168.73.15:8000
+　　　http://192.168.73.15:8000で接続可能になる。
+　　→Ajaxの命令はjQuery公式のAPI Documentation/Ajaxに書かれている
+　　　load：サーバ側の情報を読み込む
+      　$('button').click(function(){
+        　$('div').load('more.html'); //ボタンクリック時、下のdivにmore.htmlの内容表示
+      　});
+　　　$.post：データ更新
+      $.get：データ取得
+	$.get('サーバ側のファイル',{パラメータ(key:value)},function(){コールバック関数});

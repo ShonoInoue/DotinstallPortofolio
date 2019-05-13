@@ -1,0 +1,125 @@
+■HTML
+
+<p>：前後に改行＋余白。パラグラフ。
+<div>：前後に改行
+<span>：改行なし
+
+行選択してCtrl+上下
+→Atomでは選択した行を上下に移動できる。
+
+※Atomでは、autoclose-htmlをインストールしておくと便利
+
+icoファイルの作り方は特殊なので調べてみるとよい。
+
+Tab　→　字下げ
+Shift + Tab　→　字下げを戻す
+
+Ctrl + Shift + D
+→選択行を複製
+
+Ctrl + /
+→選択行をコメント化
+
+body内の内容を整理
+・header
+　┗nav：文書のナビゲーション
+・section：汎用的
+　┗section：汎用的
+・footer
+
+見出し(hX)のナンバーは、区切り内で相対的な順序であればよい。
+sectionごとにh1から始める等。
+
+リストを表現するタグ
+　ol: ordered list 連番付きリスト
+　ul: unordered list 箇条書きリスト
+　　li: list item
+
+MDN(Mozilla Developer Network)
+https://developer.mozilla.org/ja/docs/Web/HTML
+　HTML要素リファレンスを見ればタグ一覧がある
+　「許可された内容」のタグを中に含めることができる。
+
+
+■CSS
+  <head>
+  <style>
+    セレクタ {
+      プロパティ;
+    }
+  </style>
+  </head>
+
+スタイルを指定する方法
+①headタグ内にstyleタグを指定
+②cssファイルを読み込んで指定
+③タグにstyle属性を指定
+
+AtomではD&Dすることで画面2分割できる
+
+Google Chromeのデベロッパーツール（Ctrl+Shift+i / F12 / 右クリック→検証）
+Elementsタブ
+　左側：解釈されたhtml
+　右側：解釈されたcss（styles(css)/computed(属性一覧)）
+
+ComputedのBox modelで余白等確認可能
+
+user agent stylesheet
+　ブラウザが標準で持っているスタイルシート
+　→何もせずともh1が太字になったりする仕組み
+
+a:hover ←　疑似クラス
+ある要素が特定の状態にあることを表現するためのセレクタ
+
+marginの相殺
+２つの要素の上下にマージンがある場合、
+幅の小さいほうが、大きいほうに吸収されてしまう。
+例）A：margin-bottom: 12px
+　　B：margin-top: 24px
+　→AB間のmarginは24pxになる。
+
+
+■firebase
+https://firebase.google.com/?hl=ja
+Hostingを使えばネット上に公開可能
+ログイン→コンソール
+
+公開するファイルは「public」フォルダに格納しておく。
+
+Node.jsを用いて操作する。
+インストール後、cmdを開く。
+
+・バージョン確認
+node -v
+
+・ノードパッケージマネージャー
+npm -v
+
+・firebase-toolsのインストール
+npm install -g firebase-tools
+
+・バージョン確認
+firebase -V
+
+・ログイン
+firebase login
+→ブラウザ上で、ログインしたいgoogleアカウントを指定して「許可」
+
+・ドライブ変更→プロジェクトフォルダへ移動
+D:
+cd D:\Documents\Study\20190413_HTML\MyPortfolioProject
+
+・firebase listの表示→Project IDをおさえる
+firebase list
+
+・初期化
+firebase init --project==myportofolioproject-b8329
+→上下でHostingを選び、Spaceで選択
+　[Y/n]→デフォルトでYを選択。基本的にすべてEnterでOK。
+　※エラーを吐いたらIDを指定せず、次の画面でIDを選択できる。
+
+・公開
+firebase deploy
+→https://myportofolioproject-b8329.firebaseapp.com
+　※更新時も同様にdeployすればよい
+　　Firebaseのダッシュボードからロールバックも可能

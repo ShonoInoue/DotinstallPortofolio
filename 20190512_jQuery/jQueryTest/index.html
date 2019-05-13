@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <title>jQueryの練習</title>
+  <style>
+    .myStyle{
+      border: 5px solid green;
+      font-size: 48px;
+    }
+  </style>
+  </head>
+<body>
+  <p>jQueryの練習</p>
+  <p><a href="http://google.com/" data-sitename="google">Google</a></p>
+  <p><a href="http://yahoo.co.jp/">Yahoo!</a></p>
+  <p><a href="http://dotinstall.com/">Dotinstall</a></p>
+  <input type="text" value="hello" /><br />
+  <input type="text" name="name" id="name" /><br />
+  <input type="button" id="greet" value="Greet!" /><br />
+  <select id="members" name="members">
+      <option>taguchi</option>
+      <option>fkoji</option>
+      <option>dotinstall</option>
+  </select><br />
+  <button>Add!</button><br />
+  <button id="more">もっと読む</button>
+  <div id="result"></div>
+
+  <ul id="main">
+    <li>0</li>
+    <li class="item">1</li>
+    <li class="item">2</li>
+    <li>
+      3
+      <ul id="sub">
+        <li>3-0</li>
+        <li>3-1</li>
+        <li class="item">3-2</li>
+        <li class="item">3-3</li>
+        <li>3-4</li>
+        </ul>
+    </li>
+  </ul>
+
+  <div id="box" style="width:100px;height:100px;background:red;"></div>
+
+  <!-- bodyの閉じタグの直前に読み込むのが一般的 -->
+  <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+  <!-- scriptを書く場合はjQueryを読み込んだ後 -->
+  <script>
+    //ドキュメントが読み込まれたら次の処理を行う
+    //$(document).ready(function(){
+    //省略形
+    $(function(){
+      //p要素の文字色変更→ゆっくり消す
+      // $('p').css('color','red').hide('slow');
+      // $("#sub").css('color','red');
+      // $(".item").css('color','red');
+      // $("#main > .item").css('color','red');
+      // $("#main .item").css('color','red');
+      // $("p, .item").css('color','red');
+      // $(".item + .item").css('color','red');
+
+      // $("a[href='http://google.com/']").css('background','red');
+      // $("a[href!='http://google.com/']").css('background','red');
+      // $("a[href*='dotinstall']").css('background','red');
+      // $("a[href$='jp/']").css('background','red');
+
+      //filter
+      // $("#sub > li:eq(2)").css('color','red');
+      // $("#sub > li:gt(1)").css('color','red');
+      // $("#sub > li:odd").css('color','red');
+      // $("#sub > li:contains('4')").css('color','red');
+      // $("#sub > li:last").css('color','red');
+
+      //factors
+      // $("#sub").parent().css('color','red');
+      // $("#sub").children().css('color','red');
+      // $("#sub > li:eq(2)").next().css('color','red'); //eq(3)
+      // $("#sub > li:eq(2)").prev().css('color','red'); //eq(1)
+      // $("#sub > li:eq(2)").siblings().css('color','red'); //eq(0,1,3,4)
+
+      //method
+      //css設定
+      // $('p:first').css('color','red').css('background','blue');
+      //css取得
+      // console.log($('p:first').css('color'));
+      //addClass,removeClass
+      // $('p:first').addClass('myStyle');
+      // $('p:first').removeClass('myStyle');
+
+      //attr取得
+      // console.log($('a').attr('href'));
+      //attr変更
+      // $('a').attr('href','http://google.co.jp');
+      //data取得
+      // console.log($('a').data("sitename"));
+
+      //タグの中身を変更・取得
+      // $('p:first').text('just changed');
+      // console.log($('p:first').text());
+      //textでなく、htmlタグを含める場合
+      // $('p:first').html('<a href="">click me!</a>');
+      //form部品の場合
+      // $('input').val('hello. again!');
+      //中身を削除
+      // $('a:first').empty();
+      //タグ自体を削除
+      // $('a:first').remove();
+
+      //新規タグ追加
+      // var li = $('<li>').text('just added');
+      // $('#main > li:eq(1)').before(li);
+      // li.insertBefore($('#main > li:eq(1)'));
+      // $('#main > li:eq(1)').after(li);
+      // li.insertAfter($('#main > li:eq(1)'));
+      // $('#main').prepend(li);
+      // li.prependTo($('#main'));
+      // $('#main').append(li);
+      // li.appendTo($('#main'));
+
+      //effects
+      // $("#box").hide();
+      // $("#box").hide('slow'); //ゆっくり
+      // $("#box").hide(800); //ミリ秒指定
+      // $("#box").fadeOut(800);
+      // $("#box").toggle(800).toggle(800);
+      //数値の後に関数をとる（コールバック関数）
+      // $("#box").fadeOut(800, function(){
+      //   alert("gone!");
+      // });
+
+      //events:mouse
+      // $("#box").click(function(){
+      //   alert("hi!");
+      // });
+      // $("#box").mouseover(function(){
+      //   $(this).css('background','green');
+      // });
+      // $("#box").mouseout(function(){
+      //   $(this).css('background','red');
+      // });
+      // $("#box").mousemove(function(e){ //e:イベントオブジェクト
+      //   $(this).text(e.pageX);
+      // });
+
+      //events:form
+      // $("#name").focus(function(){
+      //   $(this).css('background','red');
+      // });
+      // $("#name").blur(function(){
+      //   $(this).css('background','white');
+      // });
+      // $("#members").change(function(){
+      //   alert("changed!");
+      // });
+
+      //ボタンを押すたびにp要素を動的に生成
+      // $('button').click(function(){
+      //   var p = $('<p>').text('vanish!').addClass('vanish');
+      //   $(this).before(p);
+      // });
+      //document読み込み時にvanishクラスは存在しないため、動的な要素ではうまく動作しない
+      // $('.vanish').click(function(){
+      //   $(this).remove();
+      // });
+      //動的にするにはonを用いる
+      // $('body').on('click','.vanish',function(){
+      //   $(this).remove();
+      // });
+
+      //Ajax(サーバ立ち上げ必須)
+      // $('#more').click(function(){
+        // $('#result').load('more.html');
+        // $('#message').css('color','red'); //非同期通信なので、読み込み前に実行されてしまい、赤くならない
+        //コールバック関数を使うことで解決
+        // $('#result').load('more.html',function(){
+        //   $('#message').css('color','red');
+        // });
+      // });
+
+      //GET/POST
+      // $('#greet').click(function(){
+      //   $.get('greet.php',{
+      //     name: $('#name').val()
+      //   },function(data){ //greet.phpの結果をdataに格納
+      //     // $('#result').html(data); //1データ
+      //     $('#result').html(data.message + '(' + data.length + ')'); //配列
+      //   });
+      // });
+
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,157 @@
+body {
+  /* color: red;
+  color: rgb(0, 255, 0);
+  color: #0000FF;
+  color: #00f; */
+  color: #333;
+  /* 1番目のフォントがなければ2番目 */
+  font-family: Verdana, sans-serif;
+  /* F12 Computed から Boxモデル確認 */
+  /* margin-top: 0px;
+  margin-bottom: 0px;
+  margin-left: 0;
+  margin-right: 0; */
+  margin: 0;
+}
+
+header {
+  /* background-color: pink; */
+  text-align: right;
+  padding: 10px;
+  background-image: url(../img/header.png);
+  height: 240px;
+  /* 縦横比を維持したままなるべく大きく表示 */
+  background-size: cover;
+  /* 画像の中央を中心にサイズを変える */
+  background-position: 50% 50%;
+  margin-bottom: 60px;
+}
+
+/* header内にあるul */
+header ul {
+  /* 一番上の空白を消す */
+  margin: 0;
+  /* 黒丸を消す */
+  list-style-type: none;
+  padding-left: 0;
+}
+
+header li {
+  /* リスト横並び */
+  display: inline-block;
+  /* padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 8px;
+  padding-right: 8px; */
+  /* 上下 左右 */
+  padding: 4px 8px;
+  /* 文字サイズ */
+  font-size: 12px;
+}
+
+/* header内のli直下にあるa */
+header li > a {
+  /* 下戦を消す */
+  text-decoration: none;
+  /* 親要素の設定を引き継ぐ（リンク色） */
+  color: inherit;
+}
+
+header li > a:hover {
+  /* aにマウスが乗ったとき */
+  color: royalblue;
+}
+
+.current {
+  border-bottom: 4px solid royalblue;
+}
+
+section {
+  text-align: center;
+  /* divに対しては有効にならないので注意！ */
+}
+
+section h1 {
+  /* 太さ */
+  font-weight: normal;
+  margin-bottom: 8px;
+}
+
+section p {
+  margin-top: 0;
+  font-size: 14px;
+}
+
+/* section > img {
+}*/
+/* class属性 */
+.icon {
+  /* 境界線を丸める */
+  /* border-radius: 30px; */
+  border-radius: 50%;
+  /* ボーダー */
+  /* border-color: pink;
+  border-width: 5px;
+  border-style: solid; */
+  border: 5px solid white;
+  /* 影 */
+  /* box-shadow : x y blur color */
+  box-shadow : 0 0 5px gray;
+}
+
+.works {
+  /* 画像と同じ幅に設定 */
+  width: 400px;
+  /* 余った余白が左右に行く→中央ぞろいになる */
+  /* margin-left: auto;
+  margin-right: auto; */
+  margin: 60px auto;
+  /* ボーダーをひく */
+  border-bottom: 1px solid gray;
+}
+
+/* カンマで複数設定 */
+.works h1, .works p {
+  text-align: left;
+}
+
+.works > section {
+  margin-bottom: 40px;
+}
+
+footer {
+  width: 400px;
+  /* 上 左右 下*/
+  margin: 0 auto 60px;
+}
+
+footer ul {
+  margin: 0;
+  list-style-type: none;
+  padding-left: 0;
+  /* 浮かせて配置（なかったものとして配置） */
+  float: left;
+}
+
+footer li {
+  display: inline-block;
+}
+
+footer li > a:hover {
+  opacity: 0.6;
+}
+
+footer p {
+  color: lightgray;
+  font-size: 14px;
+  text-align: right;
+}
+
+.about{
+  width: 400px;
+  margin: 0 auto 60px;
+}
+
+.about p {
+  text-align: left;
+}

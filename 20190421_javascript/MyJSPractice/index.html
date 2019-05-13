@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>JavaScript Practice</title>
+  <style>
+    body {
+      display: flex;
+      /* 折り返す */
+      flex-wrap: wrap;
+    }
+    .box {
+      width: 100px;
+      height: 100px;
+      background: skyblue;
+      cursor: pointer;
+      margin: 0 8px 8px 0;
+      text-align: center;
+      line-height: 100px;
+      /* animation */
+      transition: 0.8s;
+      }
+
+    .circle{
+      background: pink;
+      border-radius: 50%;
+      /* animation */
+      transform: rotate(360deg);
+    }
+    .win{
+      background: pink;
+      border-radius: 50%;
+      transform: rotate(360deg);
+    }
+    .lose{
+      transform: scale(0.9);
+    }
+    </style>
+</head>
+<body>
+  <!-- idを付けるとjavascriptから読み取りやすい -->
+  <!-- <div id="target1" class="box"></div>
+  <div id="target2" class="box"></div>
+  <div id="target3" class="box"></div> -->
+
+  <!-- すべての要素を読み込んでから動かすのが一般的 -->
+  <script>
+  'use strict'; //厳密なエラーチェックをしてくれる
+
+  const num = 5;
+  const winner = Math.floor(Math.random() * num); //0~4
+
+  // //定数の指定
+  // const target1 = document.getElementById('target1');
+  // const target2 = document.getElementById('target2');
+  // const target3 = document.getElementById('target3');
+  //
+  // //dblclick：ダブルクリック
+  // target1.addEventListener('click', function(){
+  //   // target.style.background = 'pink';
+  //   // target.style.borderRadius = '50%';
+  //   //CSS適用
+  //   // target.classList.add('circle');
+  //   //CSS付け替え
+  //   target1.classList.toggle('circle');
+  // });
+  // target2.addEventListener('click', function(){
+  //   target2.classList.toggle('circle');
+  // });
+  // target3.addEventListener('click', function(){
+  //   target3.classList.toggle('circle');
+  // });
+
+  for (let i=0; i<num; i++){
+    //divクラスの作成
+    const div = document.createElement('div');
+    div.classList.add('box');
+    //text追加
+    //div.textContent = i;
+    //datasetを持たせる
+    if (i == winner){
+      div.dataset.result = 'win';
+    }else{
+      div.dataset.result = 'lose';
+    }
+
+    //イベント等
+    div.addEventListener('click',function(){
+      if(div.dataset.result == 'win'){
+        div.textContent = 'Win!';
+        div.classList.add('win');
+      }else{
+        div.textContent = 'Lose!';
+        div.classList.add('lose');
+      }
+    });
+
+    //ブラウザに表示
+    document.body.appendChild(div);
+  }
+  </script>
+</body>
+</html>

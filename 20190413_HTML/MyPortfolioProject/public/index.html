@@ -1,0 +1,120 @@
+<!-- 文書のタイプを宣言 -->
+<!DOCTYPE html>
+
+<!-- 日本語のhtmlであることを指定 -->
+<html lang="ja">
+<head>
+  <!-- 文字コードを指定 -->
+  <meta charset="utf-8">
+  <title>太郎のポートフォリオサイト</title>
+  <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+  <!-- ファビコンを指定（タブ等に表示されるアイコン） -->
+  <link rel="icon" href="favicon.ico">
+  <!-- サイトの説明（検索エンジンの説明文に表示されるため、丁寧に書くとよい） -->
+  <meta name="description" content="太郎のポートフォリオサイトです。">
+  <!-- css -->
+  <!-- <style>
+    h1 {
+      color: red;
+    }
+  </style> -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li class="current">
+          <a href="index.html">
+            HOME
+          </a>
+        </li>
+        <li>
+          <a href="about.html">
+            ABOUT
+          </a>
+          </li>
+      </ul>
+    </nav>
+    <!-- <img src="img/header.png" width="400" height="130" alt="ヘッダー画像"> -->
+  </header>
+
+  <section>
+    <section>
+      <!-- altは画像読み込みエラー時に表示される文言 -->
+      <img src="img/taro.png" width="140" height="140" alt="太郎のアイコン" class="icon">
+      <h1>山田次郎</h1>
+      <p>UI/UXデザイナー見習いです</p>
+    </section>
+
+    <div class="works">
+      <section>
+        <img src="img/work1.png" width="400" height="260" alt="勇者ゲーム">
+        <h1>勇者ゲーム</h1>
+        <p>楽しいアプリです。楽しいアプリです。楽しいアプリです。楽しいアプリです。楽しいアプリです。楽しいアプリです。楽しいアプリです。楽しいアプリです。楽しいアプリです。楽しいアプリです。楽しいアプリです。楽しいアプリです。楽しいアプリです。楽しいアプリです。</p>
+      </section>
+
+      <section>
+        <img src="img/work2.png" width="400" height="260" alt="宝探しゲーム">
+        <h1>宝探しゲーム</h1>
+        <p>楽しいアプリです。楽しいアプリです。楽しいアプリです。楽しいアプリです。楽しいアプリです。楽しいアプリです。楽しいアプリです。楽しいアプリです。楽しいアプリです。楽しいアプリです。楽しいアプリです。楽しいアプリです。楽しいアプリです。楽しいアプリです。</p>
+      </section>
+
+      <section>
+        <img src="img/work3.png" width="400" height="260" alt="神経衰弱">
+        <h1>神経衰弱</h1>
+        <p>楽しいアプリです。楽しいアプリです。楽しいアプリです。楽しいアプリです。楽しいアプリです。楽しいアプリです。楽しいアプリです。楽しいアプリです。楽しいアプリです。楽しいアプリです。楽しいアプリです。楽しいアプリです。楽しいアプリです。楽しいアプリです。</p>
+      </section>
+
+    </<div>
+  </section>
+
+  <footer>
+    <ul>
+      <li>
+        <!-- メール送信先を指定 -->
+        <a href="mailto:taguchi@gmail.com" target="_blank">
+          <img src="img/mail.png" width="20" height="20" alt="メール送信">
+        </a>
+      </li>
+      <li>
+        <!-- 別タブで開く -->
+        <a href="https://dotinstall.com/" target="_blank">
+          <img src="img/blog.png" width="20" height="20" alt="ブログサイトへ">
+        </a>
+      </li>
+      <li>
+        <a href="https://dotinstall.com/">
+          <img src="img/photos.png" width="20" height="20" alt="写真サイトへ">
+        </a>
+      </li>
+    </ul>
+    <p>(C) Taro Yamada</p>
+    </footer>
+
+    <div id="back-to-top" style="position:fixed;right:5px;bottom:5px;"><a href="#"><img src="img/back-to.png" /></a></div>
+    <script>
+    $(function(){
+      //初期状態では消しておく
+      $('#back-to-top').hide();
+
+      //ある程度スクロールしたら出現
+      $(window).scroll(function(){
+        if($(this).scrollTop() > 60){
+          $('#back-to-top').fadeIn();
+        }else{
+          $('#back-to-top').fadeOut();
+        }
+      });
+
+      //クリックしたら上に戻る
+      $('#back-to-top').click(function(){
+        $('html, body').animate({
+          scrollTop:0
+        },500);
+      });
+    });
+
+    </script>
+</body>
+</html>
